@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Curvas</title>
+  <link href="layout.css" rel="stylesheet">
+  <script src="mathfunctions.js"></script>
+
+  <!-- <style>
+    canvas {
+      border: 2px solid #343434;
+    }
+
+    article {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .playable-buttons {
+      margin-left: auto;
+    }
+
+    .playable-code {
+      float: right;
+      width: 390px;
+      min-height: 400px;
+    }
+  </style> -->
+</head>
+
+<body>
+  <!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale -->
+
+  <article>
+    <header>
+      <h1>Curvas</h1>
+    </header>
+    <canvas id="canvas" width="500" height="400" class="playable-canvas"></canvas>
+    <br/>
+    <textarea id="code" class="playable-code">
+c1 = new Shape();
+c1.draw("hermite",[0,0,0],[50,50,0],[100,20,0],[30,70,0],10);
+  </textarea>
+
+
+    <script src="script.js"></script>
+  </article>
+</body>
+
+</html>
