@@ -1,10 +1,17 @@
 //OBS: Acredito que o problema esteja na normal que o cilindro e o cone estão retornando.
+//Luzes ainda estão dando problema com mais objetos.
+//quando utilizado o scale o translate age de uma maneira diferente
+
+//função com varios cenarios diferentes.
 function scenaries(sce){
   //cenarios do 1 ao 4 são a esfera com as respectivas luzes, cenario 5 é com 2 luzes+ambiente(pontual,spot)
   //cenarios do 5 ao 9 são o retangulo com as respectivas luzes, cenario 10 é com 2 luzes+ambiente
   //cenarios do 11 ao 14 são o cilindro com as respectivas luzes, cenario 15 é com 2 luzes+ambiente
   //cenarios do 16 ao 19 são o cone com as respectivas luzes, cenario 20 é com 2 luzes+ambiente
   //cenario 21 -> 2 luzes spots em 1 cilindro
+  //cenario 22 -> Cenario pedido com todos os objetos e com luzes ambiente+pontual+spot
+  //Cenario 23 -> Outro cenario pedido, sendo diferente
+  // Pode adicionar mais cenarios adicionando mais Cases.
   switch(sce){
     case 1: return [[shapes("e0")],[lights("a0")]]; break;
     case 2: return [[shapes("e0")],[lights("a0"),lights("p0")]]; break;
@@ -27,11 +34,15 @@ function scenaries(sce){
     case 19: return [[shapes("co0")],[lights("a0"),lights("s0")]]; break;
     case 20: return [[shapes("co0")],[lights("a0"),lights("p0"),lights("s0")]]; break;
     case 21: return [[shapes("e0"),shapes("ci1")],[lights("a0"),lights("p0")]]; // Cone + esfera
+    case 22: return [[shapes("e0"),shapes("r1"),shapes("ci1"),shapes("co1")],[lights("a0"),lights("p1"),lights("s0")]];  // pedido
+    case 23: return [[shapes("r2"),shapes("r3"),shapes("ci2"),shapes("e0"),shapes("co3")],[lights("a0"),lights("p0"),lights("s0")]]; // pedido
     case 24: return [[shapes("r2"),shapes("e0")],[lights("p0")]];
     default: return [[shapes("e0")],[lights("a0")]]; break;
   }
 
 }
+
+//Objetos do cenario
 function shapes(shape){
   switch(shape){
 
@@ -181,8 +192,22 @@ function shapes(shape){
     return(co);
     break;
 
+  case "co3":
+    //cone
+    co = new Shape(2);
+    co.setTranslate(-0.8,1,-2);
+    co.setScale(0.8,0.8,0.8);
+    //material gold
+    co.setAmbient(0.24705, 0.2, 0.0666);
+    co.setDifuse(0.7490, 0.6078, 0.2274);
+    co.setSpecular(0.6274, 0.6470, 0.3686);
+    co.setShine(51.2);
+    return(co);
+    break;
   }
 }
+
+//Luzes do cenario
 function lights(light){
   //Luzes
   switch(light){
@@ -196,6 +221,7 @@ function lights(light){
   case "p0":
   p0 = new Light(1); //luz pontual
   p0.setAmbient(0.8,0.8,0.8);
+  p0.setSpecular(0.8,0.8,0.8);
   p0.setDifuse(0.5,0.5,0.5);
   p0.setPosition(-3,3,-4);
   p0.setAttenuation(1,0,0);
@@ -204,7 +230,9 @@ function lights(light){
 
   case "p1":
   p1 = new Light(1); //luz pontual
+  p1.setAmbient(0.8,0.8,0.8);
   p1.setSpecular(0.8,0.8,0.8);
+  p1.setDifuse(0.5,0.5,0.5);
   p1.setPosition(3,3,4);
   p1.setAttenuation(1,0,0);
   return(p1);
