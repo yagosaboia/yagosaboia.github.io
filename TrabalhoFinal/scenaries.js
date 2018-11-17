@@ -5,7 +5,6 @@ function scenaries(sce){
   //cenarios do 11 ao 14 são o cilindro com as respectivas luzes, cenario 15 é com 2 luzes+ambiente
   //cenarios do 16 ao 19 são o cone com as respectivas luzes, cenario 20 é com 2 luzes+ambiente
   //cenario 21 -> 2 luzes spots em 1 cilindro
-  //cenario 22 -> 1 luz pontual e 1 spot em 1 cone
   switch(sce){
     case 1: return [[shapes("e0")],[lights("a0")]]; break;
     case 2: return [[shapes("e0")],[lights("a0"),lights("p0")]]; break;
@@ -28,8 +27,6 @@ function scenaries(sce){
     case 19: return [[shapes("co0")],[lights("a0"),lights("s0")]]; break;
     case 20: return [[shapes("co0")],[lights("a0"),lights("p0"),lights("s0")]]; break;
     case 21: return [[shapes("e0"),shapes("ci1")],[lights("a0"),lights("p0")]]; // Cone + esfera
-    case 22: return [[shapes("e0"),shapes("r1"),shapes("ci1"),shapes("co1")],[lights("a0"),lights("p0"),lights("s0")]];  // pedido
-    case 23: return [[shapes("r2"),shapes("r3"),shapes("ci2")],[lights("a0"),lights("p0")]];
     case 24: return [[shapes("r2"),shapes("e0")],[lights("p0")]];
     default: return [[shapes("e0")],[lights("a0")]]; break;
   }
@@ -199,7 +196,6 @@ function lights(light){
   case "p0":
   p0 = new Light(1); //luz pontual
   p0.setAmbient(0.8,0.8,0.8);
-  p0.setSpecular(0.5,0.5,0.5);
   p0.setDifuse(0.5,0.5,0.5);
   p0.setPosition(-3,3,-4);
   p0.setAttenuation(1,0,0);
@@ -208,9 +204,7 @@ function lights(light){
 
   case "p1":
   p1 = new Light(1); //luz pontual
-  p1.setAmbient(0.6,0.6,0.6);
   p1.setSpecular(0.8,0.8,0.8);
-  p1.setDifuse(0.3,0.3,0.3);
   p1.setPosition(3,3,4);
   p1.setAttenuation(1,0,0);
   return(p1);
