@@ -34,8 +34,8 @@ function scenaries(sce){
     case 19: return [[shapes("co0")],[lights("a0"),lights("s0")]]; break;
     case 20: return [[shapes("co0")],[lights("a0"),lights("p0"),lights("s0")]]; break;
     case 21: return [[shapes("e0"),shapes("ci1")],[lights("a0"),lights("p0")]]; // Cone + esfera
-    case 22: return [[shapes("e0"),shapes("r1"),shapes("ci1"),shapes("co1")],[lights("a0"),lights("p1"),lights("s0")]];  // pedido
-    case 23: return [[shapes("r2"),shapes("r3"),shapes("ci2"),shapes("e0"),shapes("co3")],[lights("a0"),lights("p0"),lights("s0")]]; // pedido
+    case 22: return [[shapes("e0"),shapes("r1"),shapes("ci1"),shapes("co1")],[lights("a0"),lights("p0"),lights("s0"), lights("p1")]];  // pedido
+    case 23: return [[shapes("r2"),shapes("r3"),shapes("ci2"),shapes("e1"), shapes("co2")],[lights("a0"),lights("p0"),lights("s0"), lights("p1")]];
     case 24: return [[shapes("r2"),shapes("e0")],[lights("p0")]];
     default: return [[shapes("e0")],[lights("a0")]]; break;
   }
@@ -77,10 +77,10 @@ function shapes(shape){
     r.setTranslate(0.5,0.2,0.5);
     r.setScale(0.5,0.5,0.5);
     //material Jade
-    r.setAmbient(0.2, 0.4, 0.1);
-    r.setDifuse(0.54, 0.89, 0.63);
-    r.setSpecular(0.316228, 0.316228, 0.316228);
-    r.setShine(12.8);
+    r.setAmbient(0.105882, 0.058824, 0.113725);
+    r.setDifuse(0.427451, 0.470588, 0.541176);
+    r.setSpecular(0.333333,  0.333333, 0.521569);
+    r.setShine(9.84615);
     return(r);
     break;
 
@@ -129,7 +129,7 @@ function shapes(shape){
   case "ci0":
     //Cilindro
     ci = new Shape(3);
-    ci.setTranslate(0.5,0.2,0.5);
+    ci.setTranslate(0.5,0.1,0.5);
     ci.setScale(0.5,0.95,0.5);
     //material gold
     ci.setAmbient(0.1745, 0.01175, 0.01175);
@@ -172,10 +172,10 @@ function shapes(shape){
     co.setTranslate(0.5,0.9,0.5);
     co.setScale(0.8,0.8,0.8);
     //material gold
-    co.setAmbient(0.24705, 0.2, 0.0666);
-    co.setDifuse(0.7490, 0.6078, 0.2274);
-    co.setSpecular(0.6274, 0.6470, 0.3686);
-    co.setShine(51.2);
+    co.setAmbient(0.0, 0.05, 0.0);
+    co.setDifuse(0.4, 0.5, 0.4);
+    co.setSpecular(0.04, 0.7, 0.04);
+    co.setShine(10.0);
     return(co);
     break;
 
@@ -192,21 +192,33 @@ function shapes(shape){
     return(co);
     break;
 
-  case "co3":
+  case "co2":
     //cone
     co = new Shape(2);
-    co.setTranslate(-0.8,1,-2);
-    co.setScale(0.8,0.8,0.8);
+    co.setTranslate(-0.4,1.2,-0.8);
+    co.setScale(0.6,0.5,0.6);
     //material gold
-    co.setAmbient(0.24705, 0.2, 0.0666);
-    co.setDifuse(0.7490, 0.6078, 0.2274);
-    co.setSpecular(0.6274, 0.6470, 0.3686);
-    co.setShine(51.2);
+    co.setAmbient(0.0, 0.05, 0.0);
+    co.setDifuse(0.4, 0.5, 0.4);
+    co.setSpecular(0.04, 0.7, 0.04);
+    co.setShine(10.0);
     return(co);
     break;
+
+  case "co3":
+  //cone
+  co = new Shape(2);
+  co.setTranslate(-0.8,1,-2);
+  co.setScale(0.8,0.8,0.8);
+  //material gold
+  co.setAmbient(0.24705, 0.2, 0.0666);
+  co.setDifuse(0.7490, 0.6078, 0.2274);
+  co.setSpecular(0.6274, 0.6470, 0.3686);
+  co.setShine(51.2);
+  return(co);
+  break;
   }
 }
-
 //Luzes do cenario
 function lights(light){
   //Luzes
@@ -221,7 +233,7 @@ function lights(light){
   case "p0":
   p0 = new Light(1); //luz pontual
   p0.setAmbient(0.8,0.8,0.8);
-  p0.setSpecular(0.8,0.8,0.8);
+  p0.setSpecular(0.5,0.5,0.5);
   p0.setDifuse(0.5,0.5,0.5);
   p0.setPosition(-3,3,-4);
   p0.setAttenuation(1,0,0);
@@ -230,10 +242,10 @@ function lights(light){
 
   case "p1":
   p1 = new Light(1); //luz pontual
-  p1.setAmbient(0.8,0.8,0.8);
+  p1.setAmbient(0.6,0.6,0.6);
   p1.setSpecular(0.8,0.8,0.8);
-  p1.setDifuse(0.5,0.5,0.5);
-  p1.setPosition(3,3,4);
+  p1.setDifuse(0.3,0.3,0.3);
+  p1.setPosition(3,3,-4);
   p1.setAttenuation(1,0,0);
   return(p1);
   break;

@@ -462,7 +462,6 @@ Light.prototype.getColor = function (shape, p, n, v) { //p = posição de inters
       var amb = Vec.compond(shape.ambient, this.ambient);
 
       //vetor indo da posição da interseção para a posição da luz
-      //var l = Vec.reverse(this.direction);
       var l = this.direction;
       //vetor indo da posição da observador para a posição do interseção
       var v = Vec.minus(p, v);
@@ -511,14 +510,11 @@ Light.prototype.getColor = function (shape, p, n, v) { //p = posição de inters
 
         //angulo entre vetores em radiano
         var angleVectors = Vec.angleBetweenVectors(d,Vec.reverse(coneDirection));
-        //var gapInRad = degToRad(this.coneGap);
-        //var angleLight =
-        //angleVectors = Math.cos(angleVectors);
         angleVectors = radToDeg(angleVectors);
-        //gapInRad = Math.cos(gapInRad);
+
         if(!(angleVectors >= this.coneGap)){
           d = Vec.module(d);
-          //console.log(d);
+
           var att = 1. / (this.attenuation.x + this.attenuation.y * d + this.attenuation.z * d * d);
           var factor_diff = 0;
           if (Vec.dot(l, n) > 0) {
@@ -1046,27 +1042,20 @@ Shape.prototype.testIntersectionRay = function (ray) {
       //top usa p2 e normal (0,1,0)
       if(Vec.dot(ray.d,normalTop) != 0){
         var t = Vec.dot(Vec.minus(p0, ray.o), normalTop) / Vec.dot(ray.d, normalTop);
-        //var q = ray.get(t);
         var q = Vec.sum(ray.o, Vec.prod(ray.d,t));
         var cond = Vec.dot(Vec.minus(q,p2),Vec.minus(q,p2));
-        //console.log(top);
         if(cond < (r*r)){
-          //console.log(top);
           arrayofT.push(t);
         }
       }
       //bottom usa p1 e normal (0,-1,0)
       var normalBottom = new Vec3(0,-1,0);
       var p0 = new Vec3(0,0,0);
-      // var bottom = Vec.dot(Vec.minus(q,p2),Vec.minus(q,p2))
       if(Vec.dot(ray.d,normalBottom) != 0){
         var t = Vec.dot(Vec.minus(p0, ray.o), normalBottom) / Vec.dot(ray.d, normalBottom);
-        //var q = ray.get(t);
         var q = Vec.sum(ray.o, Vec.prod(ray.d,t));
         var cond = Vec.dot(Vec.minus(q,p1),Vec.minus(q,p1));
-        //console.log(top);
         if(cond < (r*r)){
-          //console.log(top);
           arrayofT.push(t);
         }
       }
@@ -1092,10 +1081,6 @@ Shape.prototype.testIntersectionRay = function (ray) {
       var arrayofT = [];
       var v = ray.d;
       var p = ray.o;
-      //alfa = 45 graus
-      //pa = 0,1,0
-      //r = 1
-      //p = 0,0,0
 
       var pa = new Vec3(0,0,0);
       var va = new Vec3(0,-1,0);
@@ -1128,7 +1113,6 @@ Shape.prototype.testIntersectionRay = function (ray) {
       var c2 = Vec.dot(dp,va);
       c2 = (Math.pow(Math.sin(alphaRad),2))*(c2*c2);
       var c = c1-c2;
-
 
       var delta = b * b - 4 * a * c;
       if(delta >= 0){
