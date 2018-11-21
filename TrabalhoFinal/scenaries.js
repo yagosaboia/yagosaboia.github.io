@@ -10,6 +10,7 @@ function scenaries(sce){
   //cenarios do 16 ao 19 são o cone com as respectivas luzes, cenario 20 é com 2 luzes+ambiente
   //cenario 21 -> 2 luzes spots em 1 cilindro
   //cenario 22 -> Cenario pedido com todos os objetos e com luzes ambiente+pontual+spot
+  //cenario 22 -> Cenario pedido com todos os objetos e com luzes ambiente+pontual+pontual+spot
   //Cenario 23 -> Outro cenario pedido, sendo diferente
   // Pode adicionar mais cenarios adicionando mais Cases.
   switch(sce){
